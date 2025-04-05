@@ -1,0 +1,32 @@
+@startuml Flyweight_Pattern
+
+package Flyweight {
+    class ProductMarker {
+        +ProductMarker(productName: String, styleType: String)
+        +display(): void
+    }
+
+    interface ProductMarkerStyle {
+        +display(): void
+    }
+
+    class ElectronicsMarkerStyle {
+        +display(): void
+    }
+
+    class ClothingMarkerStyle {
+        +display(): void
+    }
+
+    class ProductMarkerStyleFactory {
+        +getProductStyle(styleType: String): ProductMarkerStyle
+        +getUniqueStylesCount(): int
+    }
+}
+
+ProductMarker --> ProductMarkerStyle
+ProductMarkerStyleFactory --> ProductMarkerStyle
+ProductMarkerStyleFactory ..> ElectronicsMarkerStyle
+ProductMarkerStyleFactory ..> ClothingMarkerStyle
+
+@enduml
